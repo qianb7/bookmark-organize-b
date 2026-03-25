@@ -129,3 +129,16 @@ HTML 输出前：
 
 有不确定项时要说明：
 - “有 N 条不确定，我会逐条访问页面确认后再归类。”
+
+##（建议）配套脚本
+
+为提升稳定性与可复用性，建议在流程中调用 skill 目录下的脚本（分类逻辑仍以本 skill 的规则为准）：
+
+1. 从书签 HTML 提取记录（不做分类）
+   - `python3 scripts/parse_bookmarks_html.py --input <source.html> --output <extracted.csv>`
+   - 生成：`<extracted.csv>`（列：标题、网址、备注）
+
+2. CSV 渲染为 Netscape 书签 HTML（需要已确认分类）
+   - `python3 scripts/render_bookmarks_html.py --input <classified.csv> --output <out.html> [--personal-toolbar]`
+   - 输入 CSV 必须包含列：`大类,小类,网站标题,备注说明,网址`
+   - `--personal-toolbar`：额外生成带“收藏夹栏”容器的版本（更贴近 Edge 书签栏导入效果）
