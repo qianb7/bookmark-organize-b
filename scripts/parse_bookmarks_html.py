@@ -22,7 +22,7 @@ from urllib.parse import unquote
 
 
 DT_A_PATTERN = re.compile(
-    r"<DT>\\s*<A\\s+HREF=\"(?P<href>[^\"]+)\"(?P<attrs>[^>]*)>(?P<title>.*?)</A>",
+    r"<DT>\s*<A\s+HREF=\"(?P<href>[^\"]+)\"(?P<attrs>[^>]*)>(?P<title>.*?)</A>",
     re.IGNORECASE | re.DOTALL,
 )
 
